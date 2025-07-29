@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anika CRM - Meetings Module</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="meeting-module.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <div class="logo-text">Anika CRM</div>
+            </div>
+            <button class="collapse-btn" id="collapseBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-details">
+                    <div class="user-name_1">Admin User</div>
+                    <div class="user-email_1">admin@anikasterilis.com</div>
+                </div>
+            </div>
+            <div class="user-actions">
+                <button class="action-btn">
+                    <span class="action-icon_1"><i class="fas fa-bell"></i></span>
+                    <span>Alerts</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon_1"><i class="fas fa-envelope"></i></span>
+                    <span>Mail</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon_1"><i class="fas fa-question-circle"></i></span>
+                    <span>Help</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-menu">
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-home"></i></span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-user-friends"></i></span>
+                <span class="nav-text">Users/RBAC</span>
+                <span class="badge" style="margin-left: 24px;">3 new</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-address-book"></i></span>
+                <span class="nav-text">Executives</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
+                <span class="nav-text">Meetings</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-box"></i></span>
+                <span class="nav-text">Products</span>
+                <span class="badge" style="margin-left: 24px;">5</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-bolt"></i></span>
+                <span class="nav-text">Communications</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+                <span class="nav-text">Contacts</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                <span class="nav-text">Reports</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-plug"></i></span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Top Search Bar -->
+    <div class="top-search-bar" id="topSearchBar">
+        <div class="top-search-container">
+            <span class="top-search-icon"><i class="fas fa-search"></i></span>
+            <input type="text" class="top-search-input" id="topSearchInput" placeholder="Search leads, contacts, deals...">
+        </div>
+        <div class="top-actions">
+            <button class="top-action-btn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            <button class="top-action-btn">
+                <i class="fas fa-question-circle"></i>
+            </button>
+            <button class="top-action-btn">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Breadcrumb navigation -->
+        <div style="display: flex;flex-direction: row;justify-content: space-between;"> 
+            <div class="breadcrumb">
+                <a href="#">Dashboard</a>
+                <span>›</span>
+                <a href="#">Meetings Module</a>
+                <span>›</span>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="header">
+                <h1>Meetings Module</h1>
+                <!-- <button class="btn btn-primary" onclick="openAddManagerModal()">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                    Add Manager to Meeting
+                </button> -->
+            </div>
+
+            <div class="tabs">
+                <div class="tabs-list">
+                    <button class="tab-trigger active" onclick="switchTab('timeline')">Timeline View</button>
+                    <button class="tab-trigger" onclick="switchTab('list')">List View</button>
+                </div>
+
+                <!-- Timeline View -->
+                <div id="timeline-tab" class="tab-content active">
+                    <!-- Calendar Overview -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="flex justify-between items-center">
+                                <div class="card-title">Calendar Overview</div>
+                                <button class="btn btn-outline btn-sm">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    Full Calendar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="calendar-header">
+                                <div class="calendar-day-header">S</div>
+                                <div class="calendar-day-header">M</div>
+                                <div class="calendar-day-header">T</div>
+                                <div class="calendar-day-header">W</div>
+                                <div class="calendar-day-header">T</div>
+                                <div class="calendar-day-header">F</div>
+                                <div class="calendar-day-header">S</div>
+                            </div>
+                            <div class="calendar-grid" id="calendar-grid">
+                                <!-- Calendar days will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Meetings -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Upcoming Meetings</div>
+                            <div class="card-description">Meetings where you are tagged as a manager</div>
+                        </div>
+                        <div class="card-content">
+                            <div id="upcoming-meetings-timeline">
+                                <!-- Timeline content will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Meetings -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Completed Meetings</div>
+                            <div class="card-description">Past meetings with feedback</div>
+                        </div>
+                        <div class="card-content">
+                            <div id="completed-meetings-timeline">
+                                <!-- Timeline content will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List View -->
+                <div id="list-tab" class="tab-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="filters">
+                                <div>
+                                    <div class="card-title">All Meetings</div>
+                                    <div class="card-description">View all scheduled meetings</div>
+                                </div>
+                                <div class="filters-right">
+                                    <div class="search-container">
+                                        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                        </svg>
+                                        <input type="text" class="form-input search-input" placeholder="Search meetings..." id="search-input">
+                                    </div>
+                                    <select class="form-select" id="type-filter" style="width: 180px;">
+                                        <option value="all">All Types</option>
+                                        <option value="Demo">Demo</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Negotiation">Negotiation</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content" style="padding: 0;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30%;">Meeting</th>
+                                        <th style="width: 12%; text-align: center;">Type</th>
+                                        <th style="width: 18%;">Date & Time</th>
+                                        <th style="width: 20%;">Attendees</th>
+                                        <th style="width: 12%; text-align: center;">Status</th>
+                                        <th style="width: 8%;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <p style="font-weight: 500; margin-bottom: 4px;">Product Demo: Tata Consultancy</p>
+                                                <p class="text-xs text-gray-400">Demonstration of our Enterprise CRM Suite</p>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-demo">Demo</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p style="margin-bottom: 2px;">May 21, 2025</p>
+                                                <p class="text-xs text-gray-400">11:00 AM - 12:00 PM</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <div class="flex items-center gap-1">
+                                                    <div class="avatar avatar-xs">PS</div>
+                                                    <span class="text-xs">Priya Sharma</span>
+                                                </div>
+                                                <div class="flex" style="gap: 2px;">
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Rajesh Kumar">RK</div>
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Ananya Desai">AD</div>
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Rahul Sharma">RS</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-scheduled">Scheduled</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2">
+                                                <button class="btn btn-outline btn-sm" onclick="openFeedbackModal(1)">
+                                                    <i class="fa-solid fa-comment"></i> Feedback
+                                                </button>
+                                                <button class="btn btn-outline btn-sm">
+                                                    <i class="fas fa-video"></i> Join
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <p style="font-weight: 500; margin-bottom: 4px;">Follow-up: Infosys</p>
+                                                <p class="text-xs text-gray-400">Follow-up discussion on the proposal sent last week</p>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-followup">Follow-up</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p style="margin-bottom: 2px;">May 21, 2025</p>
+                                                <p class="text-xs text-gray-400">2:30 PM - 3:00 PM</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <div class="flex items-center gap-1">
+                                                    <div class="avatar avatar-xs">AP</div>
+                                                    <span class="text-xs">Arjun Patel</span>
+                                                </div>
+                                                <div class="flex" style="gap: 2px;">
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Vikram Reddy">VR</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-scheduled">Scheduled</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2">
+                                                <button class="btn btn-outline btn-sm" onclick="openFeedbackModal(2)">
+                                                    <i class="fa-solid fa-comment"></i> Feedback
+                                                </button>
+                                                <button class="btn btn-outline btn-sm">
+                                                    <i class="fas fa-video"></i> Join
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <p style="font-weight: 500; margin-bottom: 4px;">Negotiation: Reliance Digital</p>
+                                                <p class="text-xs text-gray-400">Contract negotiation for the Analytics Dashboard module</p>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-negotiation">Negotiation</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p style="margin-bottom: 2px;">May 23, 2025</p>
+                                                <p class="text-xs text-gray-400">1:00 PM - 2:00 PM</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <div class="flex items-center gap-1">
+                                                    <div class="avatar avatar-xs">JR</div>
+                                                    <span class="text-xs">Joshitha Reddy</span>
+                                                </div>
+                                                <div class="flex" style="gap: 2px;">
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Priya Mehta">PM</div>
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Arjun Singh">AS</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-scheduled">Scheduled</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2">
+                                                <button class="btn btn-outline btn-sm" onclick="openFeedbackModal(3)">
+                                                    <i class="fa-solid fa-comment"></i> Feedback
+                                                </button>
+                                                <button class="btn btn-outline btn-sm">
+                                                    <i class="fas fa-video"></i> Join
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <p style="font-weight: 500; margin-bottom: 4px;">Product Demo: Mahindra Tech</p>
+                                                <p class="text-xs text-gray-400">Demonstration of our Analytics Dashboard features</p>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-demo">Demo</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p style="margin-bottom: 2px;">May 20, 2025</p>
+                                                <p class="text-xs text-gray-400">2:00 PM - 3:00 PM</p>
+                                                <p class="text-xs" style="color: #059669; margin-top: 4px;">Attended: 3:05 PM</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <div class="flex items-center gap-1">
+                                                    <div class="avatar avatar-xs">VS</div>
+                                                    <span class="text-xs">Vikram Singh</span>
+                                                </div>
+                                                <div class="flex" style="gap: 2px;">
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Karthik Iyer">KI</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-completed">Completed</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2">
+                                                <button class="btn btn-outline btn-sm" onclick="openFeedbackModal(4)">
+                                                    <i class="fa-solid fa-comment"></i> Feedback
+                                                </button>
+                                                <button class="btn btn-outline btn-sm">
+                                                    <i class="fas fa-video"></i> Join
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <p style="font-weight: 500; margin-bottom: 4px;">Product Demo: Analytics Module</p>
+                                                <p class="text-xs text-gray-400">Demonstration of our Analytics Module capabilities and integration options</p>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-demo">Demo</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p style="margin-bottom: 2px;">May 20, 2025</p>
+                                                <p class="text-xs text-gray-400">3:00 PM - 4:00 PM</p>
+                                                <p class="text-xs" style="color: #059669; margin-top: 4px;">Attended: 4:10 PM</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <div class="flex items-center gap-1">
+                                                    <div class="avatar avatar-xs">PS</div>
+                                                    <span class="text-xs">Priya Sharma</span>
+                                                </div>
+                                                <div class="flex" style="gap: 2px;">
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Rahul Mehta">RM</div>
+                                                    <div class="avatar avatar-xs" style="border: 1px solid white;" title="Ananya Desai">AD</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span class="badge badge-completed">Completed</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2">
+                                                <button class="btn btn-outline btn-sm" onclick="openFeedbackModal(5)">
+                                                    <i class="fa-solid fa-comment"></i> Feedback
+                                                </button>
+                                                <button class="btn btn-outline btn-sm">
+                                                    <i class="fas fa-video"></i> Join
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Manager Modal -->
+    <div id="add-manager-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeAddManagerModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-title">Add Manager to Meeting</div>
+                <div class="modal-description">Select a meeting and add yourself as an attendee to observe and provide feedback.</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Select Executive</label>
+                    <select class="form-select" id="executive-select">
+                        <option value="">Select an executive</option>
+                        <option value="1">Priya Sharma</option>
+                        <option value="2">Arjun Patel</option>
+                        <option value="3">Joshitha Reddy</option>
+                        <option value="4">Vikram Singh</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Select Meeting</label>
+                    <select class="form-select" id="meeting-select" disabled>
+                        <option value="">Select an executive first</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your Role</label>
+                    <select class="form-select">
+                        <option value="observer">Observer</option>
+                        <option value="participant">Active Participant</option>
+                        <option value="presenter">Co-presenter</option>
+                    </select>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox" id="notify-executive">
+                    <label for="notify-executive">Notify executive about your attendance</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Notes (visible only to you)</label>
+                    <textarea class="form-textarea" placeholder="Add any private notes about why you're attending this meeting..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeAddManagerModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="handleAddManager()">Add to Meeting</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeFeedbackModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-title">Add Feedback</div>
+                <div class="modal-description">Provide feedback for the meeting. This will be visible to the sales executive.</div>
+            </div>
+            <div class="modal-body">
+                <div id="feedback-meeting-info" class="mb-6">
+                    <!-- Meeting info will be populated by JavaScript -->
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Feedback</label>
+                    <textarea class="form-textarea" id="feedback-text" placeholder="Enter your feedback about the meeting..." style="min-height: 120px;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeFeedbackModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="handleSaveFeedback()">Save Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meeting Details Modal -->
+    <div id="meeting-details-modal" class="modal hidden">
+        <div class="modal-content modal-content-large">
+            <button class="close-btn" onclick="closeMeetingDetailsModal()">&times;</button>
+            <div class="modal-body">
+                <div id="meeting-details-content" class="grid-cols-2">
+                    <!-- Meeting details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day Meetings Modal -->
+    <div id="day-meetings-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeDayMeetingsModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-title" id="day-meetings-title">Meetings on Date</div>
+            </div>
+            <div class="modal-body">
+                <div id="day-meetings-content">
+                    <!-- Day meetings will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./meeting.js"></script>
+</body>
+</html>

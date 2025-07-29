@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anika CRM - Create New Task</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="users.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <div class="logo-text">Anika CRM</div>
+            </div>
+            <button class="collapse-btn" id="collapseBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-details">
+                    <div class="user-name_1">Admin User</div>
+                    <div class="user-email_1">admin@anikasterilis.com</div>
+                </div>
+            </div>
+            <div class="user-actions">
+                <button class="action-btn">
+                    <span class="action-icon_1"><i class="fas fa-bell"></i></span>
+                    <span>Alerts</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon_1"><i class="fas fa-envelope"></i></span>
+                    <span>Mail</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon_1"><i class="fas fa-question-circle"></i></span>
+                    <span>Help</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-menu">
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-home"></i></span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <span class="nav-icon"><i class="fas fa-user-friends"></i></span>
+                <span class="nav-text">Users/RBAC</span>
+                <span class="badge">3 new</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-address-book"></i></span>
+                <span class="nav-text">Executives</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-box"></i></span>
+                <span class="nav-text">Meetings</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-envelope"></i></span>
+                <span class="nav-text">Products</span>
+                <span class="badge">5</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-bolt"></i></span>
+                <span class="nav-text">Communications</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+                <span class="nav-text">Contacts</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                <span class="nav-text">Reports</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon"><i class="fas fa-plug"></i></span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Top Search Bar -->
+    <div class="top-search-bar" id="topSearchBar">
+        <div class="top-search-container">
+            <span class="top-search-icon"><i class="fas fa-search"></i></span>
+            <input type="text" class="top-search-input" id="topSearchInput" placeholder="Search leads, contacts, deals...">
+        </div>
+        <div class="top-actions">
+            <button class="top-action-btn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            <button class="top-action-btn">
+                <i class="fas fa-question-circle"></i>
+            </button>
+            <button class="top-action-btn">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+           <!-- Breadcrumb navigation -->
+    <div style="display: flex;flex-direction: row;justify-content: space-between;"> 
+                   <div class="breadcrumb">
+        <a href="#">Dashboard</a>
+        <span>›</span>
+        <a href="./lead-process.html">Users Access/RBAC Management</a>
+        <span>›</span>
+        <a href="./executives.html">Executive Activity Tracker</a>
+        <span>›</span>
+
+        <!-- <span>Lead Process Overview</span> -->
+    </div>
+    
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <h1>Users Access/RBAC Management</h1>
+        
+    </div>
+    
+    <!-- Back button -->
+    
+    
+    <!-- Main card -->
+    <div class="tab-container">
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="switchTab('form')">Add Executive Form</button>
+                <button class="tab-button" onclick="switchTab('executives')">Executives</button>
+            </div>
+
+            <!-- Add Executive Form Tab -->
+            <div class="tab-content active" id="formTab">
+                <form id="executiveForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeName">Employee Name (from HRMS)</label>
+                            <select id="employeeName" required>
+                                <option value="">Select employee</option>
+                                <option value="sushanth">Sushanth</option>
+                                <option value="varshitha">Varshitha</option>
+                                <option value="harsha">Harsha Priya</option>
+                                <option value="joshitha">Joshitha Reddy</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="email@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <input type="text" id="designation" value="Sales Executive" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Years of Experience</label>
+                            <input type="number" id="experience" placeholder="2" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="crmRole">CRM Access Role</label>
+                            <select id="crmRole" required>
+                                <option value="">Select role</option>
+                                <option value="sales_executive">Sales Executive</option>
+                                <option value="senior_sales_executive">Senior Sales Executive</option>
+                                <option value="sales_manager">Sales Manager</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">Region Assignment</label>
+                            <select id="region" required>
+                                <option value="">Select region</option>
+                                <option value="north">North India</option>
+                                <option value="south">South India</option>
+                                <option value="east">East India</option>
+                                <option value="west">West India</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Languages Known (with Proficiency)</label>
+                        <div class="language-selection" id="languageSelection">
+                            <span class="language-tag" data-lang="english">English</span>
+                            <span class="language-tag" data-lang="hindi">Hindi</span>
+                            <span class="language-tag" data-lang="gujarati">Gujarati</span>
+                            <span class="language-tag" data-lang="punjabi">Punjabi</span>
+                            <span class="language-tag" data-lang="tamil">Tamil</span>
+                            <span class="language-tag" data-lang="telugu">Telugu</span>
+                            <span class="language-tag" data-lang="kannada">Kannada</span>
+                            <span class="language-tag" data-lang="malayalam">Malayalam</span>
+                            <span class="language-tag" data-lang="bengali">Bengali</span>
+                            <span class="language-tag" data-lang="marathi">Marathi</span>
+                        </div>
+                    </div>
+
+                    <div class="toggle-container">
+                        <div class="toggle-switch" id="autoAssignToggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                        <span>Auto-RBAC assignment</span>
+                    </div>
+
+                    <button type="submit" class="submit-button">+ Add Executive</button>
+                </form>
+            </div>
+
+            <!-- Executives List Tab -->
+            <div class="tab-content" id="executivesTab">
+                <div class="table-header">
+                    <h2>Manage Executives</h2>
+                    <input type="text" class="search-box" placeholder="Search executives..." id="searchBox">
+                </div>
+
+                <table class="executives-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Designation</th>
+                            <th>Experience</th>
+                            <th>Languages</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="executivesTableBody">
+                        <tr>
+                            <td>
+                                <div class="executive-info">
+                                    <div class="executive-avatar">P</div>
+                                    <div class="executive-details">
+                                        <span class="executive-name">Priya Sharma</span>
+                                        <span class="executive-email">priya.sharma@company.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Sales Executive</td>
+                            <td>5 years</td>
+                            <td>
+                                <div class="language-badges">
+                                    <span class="language-badge">English</span>
+                                    <span class="language-badge">Hindi</span>
+                                    <span class="language-badge">Gujarati</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="location">
+                                    📍 Hyderabad
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="status-badge active">Active</span>
+                                    <div class="session-info">
+                                        <div>Login: 2024-01-15 09:30 AM</div>
+                                        <div>Logout: 2024-01-15 06:45 PM</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="executive-info">
+                                    <div class="executive-avatar">A</div>
+                                    <div class="executive-details">
+                                        <span class="executive-name">Arjun Patel</span>
+                                        <span class="executive-email">arjun.patel@company.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Sales Executive</td>
+                            <td>3 years</td>
+                            <td>
+                                <div class="language-badges">
+                                    <span class="language-badge">English</span>
+                                    <span class="language-badge">Hindi</span>
+                                    <span class="language-badge">Gujarati</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="location">
+                                    📍 Delhi
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="status-badge active">Active</span>
+                                    <div class="session-info">
+                                        <div>Login: 2024-01-15 10:15 AM</div>
+                                        <div class="online">Currently online</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="executive-info">
+                                    <div class="executive-avatar">J</div>
+                                    <div class="executive-details">
+                                        <span class="executive-name">Joshitha Reddy</span>
+                                        <span class="executive-email">joshitha.reddy@company.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Sales Executive</td>
+                            <td>7 years</td>
+                            <td>
+                                <div class="language-badges">
+                                    <span class="language-badge">English</span>
+                                    <span class="language-badge">Hindi</span>
+                                    <span class="language-badge">Telugu</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="location">
+                                    📍 Chennai
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="status-badge inactive">Inactive</span>
+                                    <div class="session-info">
+                                        <div>Last login: 2024-01-12 08:45 AM</div>
+                                        <div>Last logout: 2024-01-12 05:30 PM</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="executive-info">
+                                    <div class="executive-avatar">V</div>
+                                    <div class="executive-details">
+                                        <span class="executive-name">Varshitha Kumar</span>
+                                        <span class="executive-email">varshitha.kumar@company.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Sales Executive</td>
+                            <td>2 years</td>
+                            <td>
+                                <div class="language-badges">
+                                    <span class="language-badge">English</span>
+                                    <span class="language-badge">Hindi</span>
+                                    <span class="language-badge">Kannada</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="location">
+                                    📍 Bangalore
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="status-badge active">Active</span>
+                                    <div class="session-info">
+                                        <div>Login: 2024-01-15 08:00 AM</div>
+                                        <div>Logout: 2024-01-15 07:15 PM</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Proficiency Modal -->
+    <div class="modal-overlay" id="languageModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title">Language Proficiency</div>
+                    <div class="modal-subtitle" id="modalSubtitle">Rate proficiency level for English from 1 (basic) to 5 (native)</div>
+                </div>
+                <button class="modal-close" onclick="closeLanguageModal()">&times;</button>
+            </div>
+
+            <div class="proficiency-section">
+                <div class="proficiency-label">
+                    <span>Proficiency Level:</span>
+                    <span class="proficiency-rating" id="currentRating">3/5</span>
+                </div>
+
+                <div class="proficiency-buttons">
+                    <button class="proficiency-btn" data-level="1" onclick="selectProficiency(1)">1</button>
+                    <button class="proficiency-btn" data-level="2" onclick="selectProficiency(2)">2</button>
+                    <button class="proficiency-btn active" data-level="3" onclick="selectProficiency(3)">3</button>
+                    <button class="proficiency-btn" data-level="4" onclick="selectProficiency(4)">4</button>
+                    <button class="proficiency-btn" data-level="5" onclick="selectProficiency(5)">5</button>
+                </div>
+
+                <div class="proficiency-description" id="proficiencyDescription">
+                    Professional working proficiency
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeLanguageModal()">Cancel</button>
+                <button class="modal-btn modal-btn-confirm" onclick="confirmProficiency()">Confirm</button>
+            </div>
+        </div>
+
+</div>
+<!-- Language Proficiency Modal -->
+    <div class="modal-overlay" id="languageModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title">Language Proficiency</div>
+                    <div class="modal-subtitle" id="modalSubtitle">Rate proficiency level for English from 1 (basic) to 5 (native)</div>
+                </div>
+                <button class="modal-close" onclick="closeLanguageModal()">&times;</button>
+            </div>
+            
+            <div class="proficiency-section">
+                <div class="proficiency-label">
+                    <span>Proficiency Level:</span>
+                    <span class="proficiency-rating" id="currentRating">3/5</span>
+                </div>
+                
+                <div class="proficiency-buttons">
+                    <button class="proficiency-btn" data-level="1" onclick="selectProficiency(1)">1</button>
+                    <button class="proficiency-btn" data-level="2" onclick="selectProficiency(2)">2</button>
+                    <button class="proficiency-btn active" data-level="3" onclick="selectProficiency(3)">3</button>
+                    <button class="proficiency-btn" data-level="4" onclick="selectProficiency(4)">4</button>
+                    <button class="proficiency-btn" data-level="5" onclick="selectProficiency(5)">5</button>
+                </div>
+                
+                <div class="proficiency-description" id="proficiencyDescription">
+                    Professional working proficiency
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeLanguageModal()">Cancel</button>
+                <button class="modal-btn modal-btn-confirm" onclick="confirmProficiency()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Executive Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="edit-modal">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title-1" style="color: #170f5f;font-weight: 600">Edit Executive</div>
+                   
+                </div>
+                <button class="modal-close" onclick="closeEditModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="editExecutiveForm">
+                    <!-- Name and Email Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-input" value="Priya Sharma" id="executiveName">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input readonly" value="priya.sharma@company.com" id="executiveEmail" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Designation and Experience Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Designation</label>
+                            <input type="text" class="form-input" value="Sales Executive" id="executiveDesignation">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Experience (years)</label>
+                            <input type="number" class="form-input" value="5" id="executiveExperience">
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="form-group full-width">
+                        <label class="form-label">Languages</label>
+                        <div class="languages-container" id="languagesContainer">
+                            <span class="language-tag">English</span>
+                            <span class="language-tag">Hindi</span>
+                            <span class="language-tag">Gujarati</span>
+                            <span class="language-tag">Punjabi</span>
+                            <span class="language-tag">Tamil</span>
+                            <span class="language-tag">Telugu</span>
+                            <span class="language-tag">Kannada</span>
+                            <span class="language-tag">Malayalam</span>
+                            <span class="language-tag">Bengali</span>
+                            <span class="language-tag">Marathi</span>
+                        </div>
+                    </div>
+
+                    <!-- Region and Location Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Region</label>
+                            <select class="form-select" id="executiveRegion">
+                                <option value="north">North</option>
+                                <option value="south" selected>South</option>
+                                <option value="east">East</option>
+                                <option value="west">West</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Location</label>
+                            <input type="text" class="form-input" value="Hyderabad" id="executiveLocation">
+                        </div>
+                    </div>
+
+                    <!-- Active Status -->
+                    <div class="form-group full-width">
+                        <label class="form-label">Active Status</label>
+                        <div class="toggle-container">
+  <div class="toggle-switch" id="activeToggle1" onclick="toggleSwitch(this)">
+    <div class="toggle-slider"></div>
+  </div>
+  <span>Active Status</span>
+</div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn btn-cancel" onclick="closeEditModal()">Cancel</button>
+                <button class="modal-btn btn-save" onclick="saveChanges()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+    <script>
+        
+
+        
+        
+     // Global variables
+        let currentLanguage = '';
+        let currentProficiency = 3;
+        let languageProficiencies = {};
+
+        // Language names mapping
+        const languageNames = {
+            'english': 'English',
+            'hindi': 'Hindi',
+            'gujarati': 'Gujarati',
+            'punjabi': 'Punjabi',
+            'tamil': 'Tamil',
+            'telugu': 'Telugu',
+            'kannada': 'Kannada',
+            'malayalam': 'Malayalam',
+            'bengali': 'Bengali',
+            'marathi': 'Marathi'
+        };
+
+        // Proficiency descriptions
+        const proficiencyDescriptions = {
+            1: 'Basic proficiency',
+            2: 'Conversational proficiency',
+            3: 'Professional working proficiency',
+            4: 'Full professional proficiency',
+            5: 'Native or bilingual proficiency'
+        };
+
+        // DOM Elements
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const collapseBtn = document.getElementById('collapseBtn');
+        const topSearchBar = document.getElementById('topSearchBar');
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar toggle
+            collapseBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+                topSearchBar.classList.toggle('expanded');
+            });
+
+            // Language tag click listeners
+            const languageTags = document.querySelectorAll('.language-tag');
+            languageTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const langCode = this.getAttribute('data-lang');
+                    const langName = languageNames[langCode];
+                    openLanguageModal(langCode, langName);
+                });
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('languageModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLanguageModal();
+                }
+            });
+
+            // Search functionality
+            const searchBox = document.getElementById('searchBox');
+            if (searchBox) {
+                searchBox.addEventListener('input', function() {
+                    filterExecutives(this.value);
+                });
+            }
+
+            // Form submission
+            const executiveForm = document.getElementById('executiveForm');
+            if (executiveForm) {
+                executiveForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Executive added successfully!');
+                });
+            }
+
+            // Responsive adjustments
+            adjustForMobile();
+            window.addEventListener('resize', adjustForMobile);
+        });
+
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to selected tab
+            event.target.classList.add('active');
+
+            if (tabName === 'form') {
+                document.getElementById('formTab').classList.add('active');
+            } else {
+                document.getElementById('executivesTab').classList.add('active');
+            }
+        }
+
+        // Toggle switch functionality
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+        }
+
+        // Language modal functions
+        function openLanguageModal(languageName, languageDisplayName) {
+            currentLanguage = languageName;
+
+            // Check if language already has proficiency set
+            if (languageProficiencies[languageName]) {
+                currentProficiency = languageProficiencies[languageName];
+            } else {
+                currentProficiency = 3; // Default level
+            }
+
+            // Update modal content
+            document.getElementById('modalSubtitle').textContent = 
+                `Rate proficiency level for ${languageDisplayName} from 1 (basic) to 5 (native)`;
+            document.getElementById('currentRating').textContent = `${currentProficiency}/5`;
+            document.getElementById('proficiencyDescription').textContent = 
+                proficiencyDescriptions[currentProficiency];
+
+            // Highlight selected button
+            document.querySelectorAll('.proficiency-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.level == currentProficiency) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show modal
+            document.getElementById('languageModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLanguageModal() {
+            document.getElementById('languageModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectProficiency(level) {
+            currentProficiency = level;
+
+            document.getElementById('currentRating').textContent = `${level}/5`;
+            document.getElementById('proficiencyDescription').textContent = 
+                proficiencyDescriptions[level];
+
+            document.querySelectorAll('.proficiency-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.level == level) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function confirmProficiency() {
+            languageProficiencies[currentLanguage] = currentProficiency;
+
+            const tag = document.querySelector(`.language-tag[data-lang="${currentLanguage}"]`);
+            tag.classList.add('selected');
+
+            // Update tag text to show proficiency
+            const originalText = languageNames[currentLanguage];
+            tag.textContent = `${originalText} (${currentProficiency}/5)`;
+
+            closeLanguageModal();
+        }
+
+        // Search functionality
+        function filterExecutives(searchTerm) {
+            const tableBody = document.getElementById('executivesTableBody');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const name = row.querySelector('.executive-name').textContent.toLowerCase();
+                const email = row.querySelector('.executive-email').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm.toLowerCase()) || email.includes(searchTerm.toLowerCase())) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+
+        // Responsive adjustments
+        function adjustForMobile() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+                topSearchBar.classList.add('expanded');
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('languageModal').classList.contains('show')) {
+                closeLanguageModal();
+            }
+        });
+    </script>
+   
+    
+</body>
+</html>
